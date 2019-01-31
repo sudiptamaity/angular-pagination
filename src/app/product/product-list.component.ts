@@ -7,7 +7,7 @@ import { ProductService } from './product-service';
   templateUrl: './product-list.component.html'
 })
 
-@Injectable()//Data Injection
+@Injectable()//Data Injection(DI)
 export class ProductListComponent implements OnInit {
   products: Product[];
   currentPosition:number=1;
