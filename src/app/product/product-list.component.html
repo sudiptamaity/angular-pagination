@@ -1,36 +1,38 @@
 <div class="panel">
-    <!--division for panel-->
-    <div class="panel-heading">{{title}}</div>
-    <!--division for panel heading-->
-    <div class="panel-body">
-        <!--division for panel body-->
-        <div class="table-responsive">
-            <!--division for table1 responsive-->
-            
-            <button  (click)="loadProduct()"  >Get Info</button>
-          
-            <table class="table">
-               
-                <thead>
-                    <tr>
+  <!--division for panel-->
+  <div class="panel-heading">{{title}}</div>
+  <!--division for panel heading-->
+  <div class="panel-body">
+    <!--division for panel body-->
+    <div class="table-responsive">
+      <!--division for table1 responsive-->
 
-                        <th>ID</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let prod of products">
-                        <td>{{prod.id}}</td>
-                        <td>{{prod.name}}</td>
-                        <td>{{prod.price|currency }}</td>
-                        <td>{{prod.quantity}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-        </div>
+     <button (click)="loadProduct()">Get Info</button>
+      <button (click)="loadPrevProduct()">Previous</button>
+      <button (click)="loadNextProduct()">Next</button>
+
+      <table class="table">
+
+        <thead>
+          <tr>
+
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of products">
+            <td>{{prod.id}}</td>
+            <td>{{prod.name}}</td>
+            <td>{{prod.price|currency }}</td>
+            <td>{{prod.quantity}}</td>
+          </tr>
+         
+        </tbody>
+      </table>
     </div>
+  </div>
 
 </div>

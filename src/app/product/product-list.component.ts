@@ -10,6 +10,9 @@ import { ProductService } from './product-service';
 @Injectable()//Data Injection
 export class ProductListComponent implements OnInit {
   products: Product[];
+  currentPosition:number=1;
+  pageSize:number=3;
+
  
 //DI constructor
 constructor(private ps :ProductService)
@@ -19,8 +22,33 @@ constructor(private ps :ProductService)
 
 loadProduct()
 {
-  this.products=this.ps.retrieveFromServer();  
+  this.ps.retrieveFromServer().subscribe(data => {
+    this.products = data;
+});;  
 }
+
+loadNextProduct()
+{
+  this.currentPosition+=this.pageSize;
+  let url='http://localhost:8081/pagination-ajax/ProductControllerServlet2?cp='+this.currentPosition;
+  this.ps.retrieveFromServerNext(url).subscribe(data => {
+    this.products = data;
+});;  
+}
+
+loadPrevProduct()
+{
+  this.currentPosition-=this.pageSize;
+  let url='http://localhost:8081/pagination-ajax/ProductControllerServlet2?cp='+this.currentPosition;
+  this.ps.retrieveFromServerPrev(url).subscribe(data => {
+    this.products = data;
+});;  
+}
+
+
+
+
+
   ngOnInit() {
 
 //this.products=this.ps.retrieveFromServer();
